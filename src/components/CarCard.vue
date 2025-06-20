@@ -20,7 +20,7 @@
         </div>
       </div>
       <div>
-        <button class="button">Reserve</button>
+        <router-link to="/reserve" class="button">Reserve</router-link>
       </div>
     </div>
   </div>

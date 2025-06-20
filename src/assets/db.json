@@ -86,7 +86,42 @@
    "/reservations": {
         "get": {
             "reservations": [
-                {"nev": "valaki", "date": "2025-02-02"}
+                {
+                    "name": "valaki",
+                    "email": "valaki@valaki.com",
+                    "address": "1118 Budapest, Ady Endre utca 4.",
+                    "mobile": "+36301234567",
+                    "dateFrom": "2025-06-20",
+                    "dateTo": "2025-06-26",
+                    "carID": 3
+                },
+                {
+                    "name": "Kiss Anna",
+                    "email": "anna.kiss@example.com",
+                    "address": "1062 Budapest, Andrássy út 10.",
+                    "mobile": "+36305554444",
+                    "dateFrom": "2025-07-01",
+                    "dateTo": "2025-07-10",
+                    "carID": 2
+                },
+                {
+                    "name": "Nagy Péter",
+                    "email": "peter.nagy@example.com",
+                    "address": "6722 Szeged, Kossuth Lajos utca 23.",
+                    "mobile": "+36201112222",
+                    "dateFrom": "2025-06-28",
+                    "dateTo": "2025-07-03",
+                    "carID": 3
+                },
+                {
+                    "name": "Tóth Júlia",
+                    "email": "julia.toth@example.com",
+                    "address": "4026 Debrecen, Piac utca 12.",
+                    "mobile": "+36308889999",
+                    "dateFrom": "2025-06-22",
+                    "dateTo": "2025-06-29",
+                    "carID": 2
+                }
             ]
         }
    }

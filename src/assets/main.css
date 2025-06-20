@@ -74,11 +74,44 @@
 
 .datepicker{
   background-color: white;
-  height: 10em;
-  width: 30em;
+  height: 200px;
+  width: 40vw;
   border-radius: 10px;
 }
 
 .title{
   font-size: large;
+}
+
+.datepick{
+  width: 200px;
+  height: 40px;
+  border-radius: 10px;
+  border: none;
+  background-color: rgb(235, 235, 235);
+  padding: 10px;
+}
+
+.datepick:hover{
+  background-color: rgb(226, 225, 237);
+}
+
+.datepick:focus{
+  outline: 1px solid black;
+}
+
+.dateSearch{
+  height: 45px;
+  margin-top: 30px;
+  background-color: #FCC43C;
+  border-radius: 10px;
+  color: black;
+}
+
+.dateSearch:hover{
+  background-color: #b17f00be;
+}
+
+.dateError{
+  outline: 2px solid red
 }
