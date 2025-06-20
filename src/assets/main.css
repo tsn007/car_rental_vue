@@ -1,35 +1,84 @@
-@import './base.css';
+@import "https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css";
 
-#app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  font-weight: normal;
+.card-bg{
+  background-color: #42414E;
 }
 
-a,
-.green {
-  text-decoration: none;
-  color: hsla(160, 100%, 37%, 1);
-  transition: 0.4s;
-  padding: 3px;
+.media{
+  margin: 0 !important;
 }
 
-@media (hover: hover) {
-  a:hover {
-    background-color: hsla(160, 100%, 37%, 0.2);
-  }
+.card-content{
+  padding: 15px;
+  height: 90px;
 }
 
-@media (min-width: 1024px) {
-  body {
-    display: flex;
-    place-items: center;
-  }
+.card:hover{
+  outline: 2px solid gray;
+}
 
-  #app {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 0 2rem;
-  }
+.button{
+  border-radius: 20px;
+  height: 35px;
+  background-color: #FCC43C;
+  color: #362E1E;
+}
+
+.button:hover{
+  background-color: #ffb700be;
+}
+
+.navbar{
+  background-color: #2D2D2C;
+  height: 70px;
+}
+
+#user{
+  text-decoration: underline;
+  font-size: 20px;
+  padding: 10px;
+}
+
+.pestPic {
+  position: relative;
+  height: 600px;
+  overflow: hidden;
+}
+
+.pestPic::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('./pest_pic.jpg');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.6;
+  z-index: 0;
+}
+
+.pestPic > * {
+  position: relative;
+  z-index: 1;
+}
+
+.welcome{
+  font-family: Impact, sans-serif;
+  font-size: 70px;
+  color: rgb(216, 216, 216);
+  margin-top: 10px;
+  margin-bottom: 30px;
+}
+
+.datepicker{
+  background-color: white;
+  height: 10em;
+  width: 30em;
+  border-radius: 10px;
+}
+
+.title{
+  font-size: large;
 }
