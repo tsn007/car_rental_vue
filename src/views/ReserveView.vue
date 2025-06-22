@@ -1,7 +1,10 @@
 <script setup>
   import NavBar from '@/components/NavBar.vue';
   import { useCarStore } from '@/stores/cars'
+  import { ref } from 'vue';
+import { useRouter } from 'vue-router';
 
+  const router = useRouter()
   const carStore = useCarStore()
   const car = carStore.selectedCar || JSON.parse(localStorage.getItem('car'))
 
@@ -9,6 +12,17 @@
   const to = new Date(carStore.toDate)
   const diffTime = Math.abs(to-from)
   const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24))
+
+  const name = ref('')
+  const email = ref('')
+  const address = ref('')
+  const phone = ref('')
+
+  function handleSubmit(event) {
+    event.preventDefault()
+    carStore.saveReservation(name.value, email.value, address.value, phone.value)
+    router.push('/')
+  }
 </script>
 
 <template>
@@ -30,16 +44,16 @@
       </div>
     </div>
     <hr class="line">
-    <form>
+    <form @submit="handleSubmit">
       <div class="is-flex is-flex-direction-column reserveForm">
         <label for="name">Name</label>
-        <input type="text" placeholder="Name" class="reserveInput">
+        <input type="text" placeholder="Name" class="reserveInput" v-model="name">
         <label for="email" class="mt-4">Email</label>
-        <input type="text" placeholder="Email" class="reserveInput">
+        <input type="text" placeholder="Email" class="reserveInput" v-model="email">
         <label for="address" class="mt-4">Address</label>
-        <input type="text" placeholder="Address" class="reserveInput">
+        <input type="text" placeholder="Address" class="reserveInput" v-model="address">
         <label for="mobile" class="mt-4">Phone Number</label>
-        <input type="text" placeholder="Phone" class="reserveInput">
+        <input type="text" placeholder="Phone" class="reserveInput" v-model="phone">
         <label for="days" class="mt-4">Reserved days</label>
         <input type="number" class="reserveInput has-text-white" disabled :value="diffDays">
         <hr>
@@ -48,7 +62,7 @@
           <p class="has-text-white">{{ (diffDays * car.daily_price_huf).toLocaleString('hu-HU') }} Ft</p>
         </div>
         <hr>
-        <button class="button mt-2">Confirm reservation</button>
+        <button type="submit" class="button mt-2">Confirm reservation</button>
       </div>
     </form>
   </div>

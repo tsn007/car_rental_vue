@@ -46,9 +46,34 @@
       }
     }
 
+    async function saveReservation(name, email, address, phone) {
+      const response = await fetch('http://localhost:3000/reservations', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          id: reservations.value.length + 1,
+          name,
+          email,
+          address,
+          mobile: phone,
+          dateFrom: fromDate.value,
+          dateTo: toDate.value,
+          carID: selectedCar.value.id
+        })
+      })
+
+      if (response.ok) {
+        console.log('Reservation saved!')
+        await fetchReservations()
+      } else {
+        console.error('Error submitting reservation')
+      }
+    }
+
+
     function selectCar(car) {
       selectedCar.value = car
     }
 
-    return {cars, fetchCars, loading, error, fetchReservations, reservations, selectCar, selectedCar, fromDate, toDate}
+    return {cars, fetchCars, loading, error, fetchReservations, reservations, selectCar, selectedCar, fromDate, toDate, saveReservation}
   })
