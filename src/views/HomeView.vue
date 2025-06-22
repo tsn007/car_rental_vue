@@ -4,22 +4,33 @@
   import { onMounted } from 'vue';
   import { useCarStore } from '@/stores/cars';
   import { ref } from 'vue'
+  import { useRouter } from 'vue-router'
+
+  const router = useRouter()
 
   const carStore = useCarStore()
-  const fromDate = ref("2025-06-01")
-  const toDate = ref("2025-06-02")
   const cars = ref([])
   const dateError = ref(false)
 
   onMounted(async () => {
     await carStore.fetchCars()
     await carStore.fetchReservations()
-    cars.value = carStore.cars
+    carsInRange(carStore.fromDate, carStore.toDate)
   })
 
   const carsInRange = (from, to) => {
-    const notAvailableCarIds = carStore.reservations.filter((res) => !(res.dateTo < from || res.dateFrom > to)).map(res => res.carID)
-    cars.value = carStore.cars.filter((car) => !notAvailableCarIds.includes(car.id))
+    const fromDateObj = new Date(from)
+    const toDateObj = new Date(to)
+
+    const notAvailableCarIds = carStore.reservations
+      .filter((res) => {
+        const resFrom = new Date(res.dateFrom)
+        const resTo = new Date(res.dateTo)
+        return !(resTo < fromDateObj || resFrom > toDateObj)
+      })
+      .map(res => Number(res.carID))
+
+    cars.value = carStore.cars.filter(car => !notAvailableCarIds.includes(Number(car.id)))
   }
 
   const checkDates = (fromDate, toDate) => {
@@ -29,6 +40,12 @@
       dateError.value = false;
       carsInRange(fromDate, toDate)
     }
+  }
+
+  function goToReserve(car) {
+    carStore.selectCar(car)
+    localStorage.setItem('car', JSON.stringify(car))
+    router.push('/reserve')
   }
 </script>
 
@@ -41,16 +58,16 @@
     <section class="section datepicker animate__animated animate__fadeInUp">
       <div class="is-flex is-flex-direction-column">
         <div class="is-flex is-justify-content-space-between">
-          <input type="date" :class="['datepick', {'dateError': dateError}]" v-model="fromDate">
-          <input type="date" :class="['datepick', {'dateError': dateError}]" v-model="toDate">
+          <input type="date" :class="['datepick', {'dateError': dateError}]" v-model="carStore.fromDate">
+          <input type="date" :class="['datepick', {'dateError': dateError}]" v-model="carStore.toDate">
         </div>
-        <button @click="checkDates(fromDate, toDate)" class="dateSearch"><strong class="has-text-dark">Search</strong></button>
+        <button @click="checkDates(carStore.fromDate, carStore.toDate)" class="dateSearch"><strong class="has-text-dark">Search</strong></button>
       </div>
     </section>
   </div>
   <div class="columns is-multiline p-6">
     <div class="column is-one-third-tablet is-one-quarter-widescreen is-one-fifth-fullhd" v-for="car in cars" :key="car.id">
-      <CarCard :brand="car.brand" :model="car.model" :daily_price_huf="car.daily_price_huf" :image="car.image"/>
+      <CarCard :brand="car.brand" :model="car.model" :daily_price_huf="car.daily_price_huf" :image="car.image" @reserve="goToReserve(car)"/>
     </div>
   </div>
 </template>

@@ -20,7 +20,7 @@
         </div>
       </div>
       <div>
-        <router-link to="/reserve" class="button">Reserve</router-link>
+        <button @click="$emit('reserve')" class="button">Reserve</button>
       </div>
     </div>
   </div>

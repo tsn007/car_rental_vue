@@ -1,43 +1,54 @@
-import { ref } from 'vue'
-import { defineStore } from 'pinia'
+  import { ref } from 'vue'
+  import { defineStore } from 'pinia'
 
-export const useCarStore = defineStore('cars', () => {
-  const cars = ref([]);
-  const reservations = ref([]);
-  const loading = ref(false);
-  const error = ref(null);
+  export const useCarStore = defineStore('cars', () => {
+    const cars = ref([]);
+    const reservations = ref([]);
+    const loading = ref(false);
+    const error = ref(null);
+    const selectedCar = ref(null)
+    const date = new Date()
+    let day = String(date.getDate()).padStart(2, '0')
+    let toDay = date.getDate() + 2
+    let month = String(date.getMonth() + 1).padStart(2, '0')
+    let year = date.getFullYear()
+    const fromDate = ref(`${year}-${month}-${day}`)
+    const toDate = ref(`${year}-${month}-${toDay}`)
 
-  async function fetchCars(){
-    loading.value = true
-    error.value = null
+    async function fetchCars(){
+      loading.value = true
+      error.value = null
 
-    try{
-      const res = await fetch('http://127.0.0.1:8000/cars');
-      if (!res.ok) throw new Error('Failed to load data');
-      const result = await res.json()
-      cars.value = result.cars
-      //console.log('Fetched cars:', cars.value)
-    }catch(err){
-      error.value = err;
-    }finally{
-      loading.value = false;
+      try{
+        const res = await fetch('http://127.0.0.1:3000/cars');
+        if (!res.ok) throw new Error('Failed to load data');
+        cars.value = await res.json()
+        //console.log('Fetched cars:', cars.value)
+      }catch(err){
+        error.value = err;
+      }finally{
+        loading.value = false;
+      }
     }
-  }
 
-  async function fetchReservations(){
-    loading.value = true
-    error.value = null
-    try{
-      const res = await fetch('http://localhost:8000/reservations');
-      if(!res.ok) throw new Error('Failed to load data');
-      const result = await res.json()
-      reservations.value = result.reservations
-    }catch(err){
-      error.value = err;
-    }finally{
-      loading.value = false;
+    async function fetchReservations(){
+      loading.value = true
+      error.value = null
+      try{
+        const res = await fetch('http://localhost:3000/reservations');
+        if(!res.ok) throw new Error('Failed to load data');
+        reservations.value = await res.json()
+        console.log('Reservations:', reservations.value)
+      }catch(err){
+        error.value = err;
+      }finally{
+        loading.value = false;
+      }
     }
-  }
 
-  return {cars, fetchCars, loading, error, fetchReservations, reservations}
-})
+    function selectCar(car) {
+      selectedCar.value = car
+    }
+
+    return {cars, fetchCars, loading, error, fetchReservations, reservations, selectCar, selectedCar, fromDate, toDate}
+  })
