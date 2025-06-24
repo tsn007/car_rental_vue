@@ -50,7 +50,7 @@
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          id: reservations.value.length + 1,
+          id: String(reservations.value.length + 1),
           name,
           email,
           address,
@@ -74,7 +74,57 @@
       selectedCar.value = car
     }
 
-    return {cars, fetchCars, loading, error, fetchReservations, reservations, selectCar, selectedCar, fromDate, toDate, saveReservation}
+    async function saveCar(brand, model, year, transmission, fuel_type, passengers, price, image){
+      const response = await fetch('http://localhost:3000/cars', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          id: String(cars.value.length + 1),
+          brand,
+          model,
+          year,
+          transmission,
+          fuel_type,
+          passengers,
+          daily_price_huf: price,
+          image
+        })
+      })
+
+      if (response.ok) {
+        console.log('Car added!')
+        await fetchReservations()
+      } else {
+        console.error('Error while adding car!')
+      }
+    }
+
+    async function updateCar(id, brand, model, year, transmission, fuel_type, passengers, price, image){
+      const response = await fetch(`http://localhost:3000/cars/${id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          id,
+          brand,
+          model,
+          year,
+          transmission,
+          fuel_type,
+          passengers,
+          daily_price_huf: price,
+          image
+        })
+      })
+
+      if (response.ok) {
+        console.log('Car updated!')
+        await fetchReservations()
+      } else {
+        console.error('Error while updating car!')
+      }
+    }
+
+    return {cars, fetchCars, loading, error, fetchReservations, reservations, selectCar, selectedCar, fromDate, toDate, saveReservation, saveCar, updateCar}
   })
 
   export const useProfileStore = defineStore('admin', () => {
@@ -96,5 +146,5 @@
       }
     }
 
-    return {fetchAdmin, admin}
+    return {fetchAdmin, admin, error, loading}
   })

@@ -8,11 +8,11 @@
       "id": "1",
       "brand": "Ford",
       "model": "Focus",
-      "year": 2020,
+      "year": 2022,
       "transmission": "Automatic",
       "fuel_type": "Petrol",
       "passengers": 5,
-      "daily_price_huf": 13500,
+      "daily_price_huf": 135000000,
       "image": "https://media.ed.edmunds-media.com/ford/focus/2013/oem/2013_ford_focus_4dr-hatchback_bev_fq_oem_1_815.jpg"
     },
     {
