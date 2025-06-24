@@ -1,7 +1,11 @@
 {
+  "admin": {
+    "email": "admin@admin.com",
+    "password": "admin"
+  },
   "cars": [
     {
-      "id": 1,
+      "id": "1",
       "brand": "Ford",
       "model": "Focus",
       "year": 2020,
@@ -12,7 +16,7 @@
       "image": "https://media.ed.edmunds-media.com/ford/focus/2013/oem/2013_ford_focus_4dr-hatchback_bev_fq_oem_1_815.jpg"
     },
     {
-      "id": 2,
+      "id": "2",
       "brand": "Tesla",
       "model": "Model S",
       "year": 2021,
@@ -23,7 +27,7 @@
       "image": "https://media.ed.edmunds-media.com/tesla/model-s/2021/oem/2021_tesla_model-s_sedan_plaid_fq_oem_1_815.jpg"
     },
     {
-      "id": 3,
+      "id": "3",
       "brand": "Toyota",
       "model": "Highlander",
       "year": 2020,
@@ -34,7 +38,7 @@
       "image": "https://media.ed.edmunds-media.com/toyota/highlander/2020/oem/2020_toyota_highlander_4dr-suv_platinum_fq_oem_1_815.jpg"
     },
     {
-      "id": 4,
+      "id": "4",
       "brand": "Chevrolet",
       "model": "Suburban",
       "year": 2021,
@@ -45,7 +49,7 @@
       "image": "https://media.ed.edmunds-media.com/chevrolet/suburban/2021/oem/2021_chevrolet_suburban_4dr-suv_high-country_fq_oem_1_815.jpg"
     },
     {
-      "id": 5,
+      "id": "5",
       "brand": "Rivian",
       "model": "R1T",
       "year": 2022,
@@ -56,7 +60,7 @@
       "image": "https://media.ed.edmunds-media.com/rivian/r1t/2022/oem/2022_rivian_r1t_crew-cab-pickup_launch-edition_fq_oem_1_815.jpg"
     },
     {
-      "id": 6,
+      "id": "6",
       "brand": "Tesla",
       "model": "Model X",
       "year": 2022,
@@ -67,7 +71,7 @@
       "image": "https://media.ed.edmunds-media.com/tesla/model-x/2024/oem/2024_tesla_model-x_4dr-suv_plaid_fq_oem_1_815.jpg"
     },
     {
-      "id": 7,
+      "id": "7",
       "brand": "Ferrari",
       "model": "F40",
       "year": 2014,
@@ -80,7 +84,7 @@
   ],
   "reservations": [
     {
-      "id": 1,
+      "id": "1",
       "name": "valaki",
       "email": "valaki@valaki.com",
       "address": "1118 Budapest, Ady Endre utca 4.",
@@ -90,7 +94,7 @@
       "carID": 3
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "Kiss Anna",
       "email": "anna.kiss@example.com",
       "address": "1062 Budapest, Andrássy út 10.",
@@ -100,7 +104,7 @@
       "carID": 2
     },
     {
-      "id": 3,
+      "id": "3",
       "name": "Nagy Péter",
       "email": "peter.nagy@example.com",
       "address": "6722 Szeged, Kossuth Lajos utca 23.",
@@ -110,7 +114,7 @@
       "carID": 3
     },
     {
-      "id": 4,
+      "id": "4",
       "name": "Tóth Júlia",
       "email": "julia.toth@example.com",
       "address": "4026 Debrecen, Piac utca 12.",

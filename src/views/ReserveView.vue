@@ -2,7 +2,7 @@
   import NavBar from '@/components/NavBar.vue';
   import { useCarStore } from '@/stores/cars'
   import { ref } from 'vue';
-import { useRouter } from 'vue-router';
+  import { useRouter } from 'vue-router';
 
   const router = useRouter()
   const carStore = useCarStore()
@@ -17,11 +17,18 @@ import { useRouter } from 'vue-router';
   const email = ref('')
   const address = ref('')
   const phone = ref('')
+  const error = ref(false)
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault()
-    carStore.saveReservation(name.value, email.value, address.value, phone.value)
-    router.push('/')
+    if(!name.value || !email.value || !address.value || !phone.value){
+      error.value = true
+    }else{
+      error.value = false
+      await carStore.saveReservation(name.value, email.value, address.value, phone.value)
+      localStorage.removeItem('car')
+      router.push('/')
+    }
   }
 </script>
 
@@ -47,13 +54,13 @@ import { useRouter } from 'vue-router';
     <form @submit="handleSubmit">
       <div class="is-flex is-flex-direction-column reserveForm">
         <label for="name">Name</label>
-        <input type="text" placeholder="Name" class="reserveInput" v-model="name">
+        <input type="text" placeholder="Name" :class="['reserveInput', {'loginError': error}]" v-model="name">
         <label for="email" class="mt-4">Email</label>
-        <input type="text" placeholder="Email" class="reserveInput" v-model="email">
+        <input type="text" placeholder="Email" :class="['reserveInput', {'loginError': error}]" v-model="email">
         <label for="address" class="mt-4">Address</label>
-        <input type="text" placeholder="Address" class="reserveInput" v-model="address">
+        <input type="text" placeholder="Address" :class="['reserveInput', {'loginError': error}]" v-model="address">
         <label for="mobile" class="mt-4">Phone Number</label>
-        <input type="text" placeholder="Phone" class="reserveInput" v-model="phone">
+        <input type="text" placeholder="Phone" :class="['reserveInput', {'loginError': error}]" v-model="phone">
         <label for="days" class="mt-4">Reserved days</label>
         <input type="number" class="reserveInput has-text-white" disabled :value="diffDays">
         <hr>

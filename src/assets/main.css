@@ -116,6 +116,10 @@
   outline: 2px solid red
 }
 
+.loginError{
+  outline: 2px solid red
+}
+
 .mainDivReserve{
   margin-top: 80px;
 }
@@ -188,3 +192,32 @@ h2{
   margin-left: 4px;
 }
 
+.loginMainDiv{
+  margin-top: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+  overflow: hidden;
+}
+
+.reservations{
+  margin-top: 80px;
+}
+
+.restitle{
+  margin-bottom: 30px;
+  color: white;
+}
+
+.adminNavDiv{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.adminbuttons{
+  gap: 50px;
+  margin-bottom: 50px;
+}

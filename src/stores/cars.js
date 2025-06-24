@@ -23,7 +23,6 @@
         const res = await fetch('http://127.0.0.1:3000/cars');
         if (!res.ok) throw new Error('Failed to load data');
         cars.value = await res.json()
-        //console.log('Fetched cars:', cars.value)
       }catch(err){
         error.value = err;
       }finally{
@@ -76,4 +75,26 @@
     }
 
     return {cars, fetchCars, loading, error, fetchReservations, reservations, selectCar, selectedCar, fromDate, toDate, saveReservation}
+  })
+
+  export const useProfileStore = defineStore('admin', () => {
+    const loading = ref(false);
+    const error = ref(null);
+    const admin = ref(null)
+
+    async function fetchAdmin(){
+      loading.value = true
+      error.value = null
+      try{
+        const res = await fetch('http://127.0.0.1:3000/admin');
+        if (!res.ok) throw new Error('Failed to load data');
+        admin.value = await res.json()
+      }catch(err){
+        error.value = err;
+      }finally{
+        loading.value = false;
+      }
+    }
+
+    return {fetchAdmin, admin}
   })
