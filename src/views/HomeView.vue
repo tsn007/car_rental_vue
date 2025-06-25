@@ -72,7 +72,7 @@
       </div>
     </section>
   </div>
-  <div class="columns is-multiline p-6">
+  <div class="columns is-multiline p-6 animate__animated animate__fadeInUp">
     <div id="carlist" class="column is-one-third-tablet is-one-quarter-widescreen is-one-fifth-fullhd" v-for="car in cars" :key="car.id">
       <CarCard :brand="car.brand" :model="car.model" :daily_price_huf="car.daily_price_huf" :image="car.image" @reserve="goToReserve(car)"/>
     </div>

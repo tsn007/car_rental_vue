@@ -33,7 +33,9 @@
           <input type="text" :class="['reserveInput', {'loginError': error}]" placeholder="Email" v-model="email">
           <label for="email" class="mt-4">Password</label>
           <input type="password" placeholder="Password" :class="['reserveInput', {'loginError': error}]" v-model="password">
-          <button type="submit" class="button mt-5">Log in</button>
+          <div class="is-flex is-justify-content-center">
+            <button type="submit" class="button mt-5">Log in</button>
+          </div>
         </div>
       </form>
   </div>

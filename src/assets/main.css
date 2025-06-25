@@ -18,6 +18,7 @@
 }
 
 .button{
+  width: 200px;
   border-radius: 20px;
   height: 35px;
   background-color: #FCC43C;
@@ -28,15 +29,43 @@
   background-color: #ffb700be;
 }
 
+.carbtn{
+  width: 90px;
+  border-radius: 20px;
+  height: 35px;
+  background-color: #FCC43C;
+  color: #362E1E;
+}
+
+.carbtn:hover{
+  background-color: #ffb700be;
+}
+
+.drop{
+  width: 100px;
+  border-radius: 20px;
+  height: 35px;
+  background-color: #FCC43C;
+  color: #362E1E;
+}
+
+.drop:hover{
+  background-color: #ffb700be;
+}
+
 .navbar{
   background-color: #2D2D2C;
   height: 70px;
 }
 
-#user{
+.user{
   text-decoration: underline;
-  font-size: 20px;
   padding: 10px;
+  color: white;
+}
+
+.navtitle{
+  color: white;
 }
 
 .pestPic {
@@ -75,7 +104,7 @@
 .datepicker{
   background-color: white;
   height: 200px;
-  width: 40vw;
+  width: 520px;
   border-radius: 10px;
 }
 
@@ -221,3 +250,76 @@ h2{
   gap: 50px;
   margin-bottom: 50px;
 }
+
+.detailDiv{
+  width: 50%;
+}
+
+@media screen and (min-width: 1920px) {
+  .welcome{
+    font-size: 4vw;
+  }
+
+  .button{
+    width: 200px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  body{
+    overflow-x: hidden;
+  }
+
+  .datepicker{
+    width: 100%;
+  }
+
+  .welcome{
+    font-size: 30px;
+  }
+
+  .reserveForm{
+    width: 100vw;
+  }
+
+  .loginMainDiv{
+    align-items: baseline;
+    margin-top: 70px;
+  }
+
+  .adminbuttons{
+    gap: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .carImage{
+    width: 100vw;
+  }
+
+  .pricetag{
+    width: 50vw;
+    height: 12vw;
+    font-size: 7vw;
+    justify-content: center;
+    align-items: center;
+    border-top-left-radius: 6vw;
+  }
+
+  h2{
+    font-size: 9vw;
+  }
+
+  .detailtext{
+    font-size: 3vw;
+  }
+
+  .detailDiv{
+    width: 100%;
+  }
+
+  .details{
+    width: 100vw;
+  }
+}
+

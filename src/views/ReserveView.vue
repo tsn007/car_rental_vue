@@ -41,11 +41,11 @@
     </div>
     <h2>{{car.brand}} {{ car.model }}</h2>
     <div class="is-flex details">
-      <div class="is-flex is-flex-direction-column" style="width: 50%;">
+      <div class="is-flex is-flex-direction-column detailDiv">
         <p class="detailtext">Year of manufacturing: {{ car.year }}</p>
         <p class="detailtext">Passengers: {{ car.passengers }}</p>
       </div>
-      <div class="is-flex is-flex-direction-column" style="width: 50%;">
+      <div class="is-flex is-flex-direction-column detailDiv">
         <p class="detailtext">Transmission: {{ car.transmission }}</p>
         <p class="detailtext">Fuel type: {{ car.fuel_type }}</p>
       </div>
@@ -69,7 +69,9 @@
           <p class="has-text-white">{{ (diffDays * car.daily_price_huf).toLocaleString('hu-HU') }} Ft</p>
         </div>
         <hr>
-        <button type="submit" class="button mt-2">Confirm reservation</button>
+        <div class="is-flex is-justify-content-center">
+          <button type="submit" class="button mt-2">Confirm reservation</button>
+        </div>
       </div>
     </form>
   </div>

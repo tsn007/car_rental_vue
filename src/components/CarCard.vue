@@ -20,7 +20,7 @@
         </div>
       </div>
       <div>
-        <button @click="$emit('reserve')" class="button">Reserve</button>
+        <button @click="$emit('reserve')" class="carbtn">Reserve</button>
       </div>
     </div>
   </div>

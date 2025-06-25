@@ -19,7 +19,7 @@
     <div class="box">
       <div class="is-flex is-justify-content-space-between is-align-items-center">
         <strong>Reservation: #{{ res.id }}</strong>
-        <button class="button is-small" @click="toggle(res.id)">
+        <button class="drop is-small" @click="toggle(res.id)">
           {{ opened.includes(res.id) ? 'Close' : 'Open' }}
         </button>
       </div>
