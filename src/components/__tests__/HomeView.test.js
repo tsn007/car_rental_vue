@@ -39,7 +39,6 @@ describe('HomeView.vue', () => {
     ]
     store.reservations = []
 
-    // !!! Itt mockoljuk a metódusokat
     store.fetchCars = vi.fn()
     store.fetchReservations = vi.fn()
   })

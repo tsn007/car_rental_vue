@@ -80,6 +80,17 @@
       "passengers": 4,
       "daily_price_huf": 56000,
       "image": "https://radical-mag.com/wp-content/uploads/2022/12/F40-77676-1-1920x1280.jpeg"
+    },
+    {
+      "id": "8",
+      "brand": "Renault",
+      "model": "Espace",
+      "year": 1997,
+      "transmission": "Manual",
+      "fuel_type": "Diesel",
+      "passengers": 7,
+      "daily_price_huf": 30000,
+      "image": ""
     }
   ],
   "reservations": [
@@ -91,7 +102,7 @@
       "mobile": "+36301234567",
       "dateFrom": "2025-06-20",
       "dateTo": "2025-06-26",
-      "carID": 3
+      "carID": "3"
     },
     {
       "id": "2",
@@ -101,7 +112,7 @@
       "mobile": "+36305554444",
       "dateFrom": "2025-07-01",
       "dateTo": "2025-07-10",
-      "carID": 2
+      "carID": "2"
     },
     {
       "id": "3",
@@ -111,7 +122,7 @@
       "mobile": "+36201112222",
       "dateFrom": "2025-06-28",
       "dateTo": "2025-07-03",
-      "carID": 3
+      "carID": "3"
     },
     {
       "id": "4",
@@ -121,7 +132,7 @@
       "mobile": "+36308889999",
       "dateFrom": "2025-06-22",
       "dateTo": "2025-06-29",
-      "carID": 2
+      "carID": "2"
     }
   ]
 }
